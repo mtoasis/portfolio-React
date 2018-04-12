@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Slider from '../../components/Slider'
 import IconBar from '../../components/IconBar'
+import store from '../../store'
 
 //slider images
 import img1 from '../../components/image/pf1/tnt1.jpg'
@@ -32,6 +33,30 @@ class Pf1 extends Component {
             height: null,
         }
     }
+
+    componentWillMount() {
+        this.updateDimensions()
+      }    
+
+      updateDimensions() {
+        let newWidth = window.innerWidth
+    
+        if (newWidth <= 1980) {
+          store.dispatch({
+            type:"STORE_WIDTH",
+            payload:newWidth
+          })
+        }
+    
+        let newHeight = window.innerHeight
+        if (newHeight <= 1080) {
+          store.dispatch({
+            type:"STORE_HEIGHT",
+            payload:newHeight
+          })
+        }
+      }
+    
 
 
     render() {

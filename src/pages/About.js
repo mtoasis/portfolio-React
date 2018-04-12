@@ -106,7 +106,7 @@ class About extends Component {
                     <div style={styles.frontEnd}>
                         <div style={styles.titleDiv}>
 
-                            <img src={react} style={styles.logo} />
+                            <img alt ="reactLogo" src={react} style={styles.logo} />
                             <span style={styles.titleText}>
                                 Front End
                         </span>
@@ -122,12 +122,12 @@ class About extends Component {
 
                     <div style={styles.backEnd}>
                         <div style={styles.titleDiv}>
-                            <img alt="frontendLogo" src={backend} style={styles.logo} />
+                            <img alt="backendLogo" src={backend} style={styles.logo} />
                             <span style={styles.titleText}>
                                 Back End
                         </span>
                         </div>
-                        <div alt="backendLogo" style={styles.skillTextDiv}>
+                        <div  style={styles.skillTextDiv}>
                             <span style={styles.skillText}>
                                 Mainly focusing on Node.js and Express.js
                                 MongoDB and MySQL are main database languages.
