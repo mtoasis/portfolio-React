@@ -1,7 +1,7 @@
 export default function reducer(state = {
     location: "/",
-    width: null,
-    height: null,
+    width: 1920,
+    height: 1080,
 
 }, action) {
     switch (action.type) {
