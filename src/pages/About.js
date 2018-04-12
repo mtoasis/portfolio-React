@@ -30,7 +30,7 @@ class About extends Component {
     render() {
 
         let width = this.props.width
-        let height = this.props.height
+
 
         const styles = {
             skillDiv: {

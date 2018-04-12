@@ -10,9 +10,8 @@ import Nav from '../src/components/Nav'
 import About from '../src/pages/About'
 import Pf1 from '../src/pages/Pf1/Pf1'
 import Pf2 from '../src/pages/Pf2/Pf2'
-import Pf3 from '../src/pages/Pf3/Pf3'
+// import Pf3 from '../src/pages/Pf3/Pf3'
 import Contact from '../src/pages/Contact'
-import NoMatch from '../src/pages/NoMatch'
 import Slider from '../src/components/Slider'
 
 let mapStateToProps = (store) => {
@@ -81,7 +80,7 @@ class App extends Component {
             {/* <Route exact path="/pf3" component={Pf3} /> */}
             <Route exact path="/slider" component={Slider} />
             <Route exact path="/contact" component={Contact} />
-            <Route component={NoMatch} />
+            <Route component={About} />
           </Switch>
         </div>
       </Router>

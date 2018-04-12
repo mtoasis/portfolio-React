@@ -14,9 +14,6 @@ let mapStateToProps = (store) => {
 
 class Contact extends Component {
 
-    constructor() {
-        super()
-    }
 
     componentWillMount() {
         this.getPath()

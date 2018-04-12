@@ -158,7 +158,7 @@ class Slider extends Component {
 
     render() {
         let width = this.props.width
-        let height = this.props.height
+
         let imgWidth = this.props.imgSize.width / 1920
         let imgHeight = imgWidth * this.props.imgSize.height / this.props.imgSize.width
 
@@ -303,26 +303,26 @@ class Slider extends Component {
                     </span>
                     <div style={styles.smallWhiteCoverLeft}>
                     </div>
-                    <img src={this.state.slider.one}
+                    <img alt="img1" src={this.state.slider.one}
                         style={styles.smallImgLeft} />
                 </div>
                 <div style={styles.mediumImgDiv}>
                     <div style={styles.mediumWhiteCoverLeft}>
                     </div>
-                    <img src={this.state.slider.two} style={styles.mediumImgLeft} />
+                    <img alt="img2" src={this.state.slider.two} style={styles.mediumImgLeft} />
                 </div>
                 <div style={styles.largeImgDiv}>
-                    <img src={this.state.slider.three} style={styles.largeImg} />
+                    <img alt="img3" src={this.state.slider.three} style={styles.largeImg} />
                 </div>
                 <div style={styles.mediumImgDiv}>
                     <div style={styles.mediumWhiteCoverRight}>
                     </div>
-                    <img src={this.state.slider.four} style={styles.mediumImgRight} />
+                    <img alt="img4" src={this.state.slider.four} style={styles.mediumImgRight} />
                 </div>
                 <div style={styles.smallImgDiv}>
                     <div style={styles.smallWhiteCoverRight}>
                     </div>
-                    <img src={this.state.slider.five} style={styles.smallImgRight} />
+                    <img alt="img5" src={this.state.slider.five} style={styles.smallImgRight} />
                     <span style={styles.arrowRight}
                         onClick={this.arrowRight.bind(this)}>                    
                         {`>`}

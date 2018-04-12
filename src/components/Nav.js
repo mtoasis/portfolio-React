@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import './Nav.css'
+
 
 let mapStateToProps = (store) => {
     return {

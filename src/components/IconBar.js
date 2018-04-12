@@ -12,14 +12,10 @@ let mapStateToProps = (store) => {
 
 class IconBar extends Component {
 
-    constructor(props) {
-        super(props)
-    }
-
 
     render() {
         let width = this.props.width
-        let height = this.props.height
+
         const techIcons = this.props.techIcons
         const linkIcons = this.props.linkIcons
 
