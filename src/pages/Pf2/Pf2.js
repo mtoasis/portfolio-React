@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Slider from '../../components/Slider'
 import IconBar from '../../components/IconBar'
-import store from '../../store'
-
+import { connect } from "react-redux";
+import MobileSlider from '../../components/Slick'
 
 //slider images
 import img1 from '../../components/image/pf2/scp1.png'
@@ -21,7 +21,16 @@ import htmlIcon from '../../components/image/Icons/htmlIcon.png'
 import jsIcon from '../../components/image/Icons/jsIcon.png'
 import cssIcon from '../../components/image/Icons/cssIcon.png'
 
-class Pf1 extends Component {
+
+let mapStateToProps = (store) => {
+    return {
+        width: store.location.width,
+        height: store.location.height
+    }
+}
+
+
+class Pf2 extends Component {
 
     constructor() {
         super()
@@ -31,33 +40,64 @@ class Pf1 extends Component {
             height: null,
         }
     }
-
-    componentWillMount() {
-        this.updateDimensions()
-      }
-    
-    
-      updateDimensions() {
-        let newWidth = window.innerWidth
-    
-        if (newWidth <= 1980) {
-          store.dispatch({
-            type:"STORE_WIDTH",
-            payload:newWidth
-          })
-        }
-    
-        let newHeight = window.innerHeight
-        if (newHeight <= 1080) {
-          store.dispatch({
-            type:"STORE_HEIGHT",
-            payload:newHeight
-          })
-        }
-      }
     
 
     render() {
+
+        const mobileStyle={
+            container:{
+                width:"90%",
+                position:"absolute",
+                top:"70px",
+                left:"4%"
+            }
+        }
+
+        if (this.props.width < 480) {
+            return (
+                <div style={mobileStyle.container}>
+                    <MobileSlider                     
+                    
+                    images={{
+                        img1: img1,
+                        img2: img2,
+                        img3: img3,
+                        img4: img4,
+                        img5: img5,
+                    }}
+
+                    imgSize={{
+                        width: 280,
+                        height: 446
+                    }}
+                    />
+
+                <IconBar
+                    techIcons={[
+                        { img: jsIcon },
+                        { img: htmlIcon },
+                        { img: cssIcon },
+                        { img: jqueryIcon },
+                        { img: sqlIcon },
+                        { img: nodeIcon },
+                    ]}
+
+                    linkIcons={[
+                        {
+                            img: githubIcon,
+                            url: "https://github.com/mtoasis/TNT-RN"
+                        },
+                        {
+                            img: liveIcon,
+                            url: "https://expo.io/@mtoasis22/TNTmobile"
+                        }]
+                    }
+                />
+
+                </div>
+            )
+        }
+
         return (
 
             <div>
@@ -102,4 +142,4 @@ class Pf1 extends Component {
     }
 }
 
-export default Pf1;
+export default connect(mapStateToProps)(Pf2);

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-
+import Ionicon from 'react-ionicons'
 
 let mapStateToProps = (store) => {
     return {
@@ -13,15 +13,84 @@ let mapStateToProps = (store) => {
 
 class Nav extends Component {
 
+    constructor() {
+        super()
+        this.state = {
+            isMenuOn: false
+        }
+    }
+
+    openMenu = () => {
+        if (this.state.isMenuOn) {
+            console.log("menu off")
+            this.setState({ isMenuOn: false })
+        }
+        else {
+            console.log("menu on")
+            this.setState({ isMenuOn: true })
+        }
+    }
 
     render() {
 
         let width = this.props.width
         let height = this.props.height
 
+        const stylesMobile = {
+            navDiv: {
+                width: "101%",
+                height: "50px",
+                position: "fixed",
+                top: 0,
+                fontFamily: "'Lato', 'sans-serif'",
+                backgroundColor: "black",
+                zIndex: 10,
+                marginLeft:"-10px"
+            },
+            nameDiv: {
+                width: "50%",
+                position: "absolute",
+                bottom: "10px"
+            },
+            nameFont: {
+                fontSize: "25px",
+                color: "white",
+                display: "block",
+                marginLeft: "5%",
+                fontWeight: "bold",
+            },
+            subtitleFont: {
+                fontSize: "15px",
+                color: "white",
+                display: "block",
+                marginLeft: "20%",
+            },
+            menuDiv: {
+                position: "absolute",
+                right: "3%",
+                bottom: "0%",
+                width: "50px",
+            },
+            menuFont: {
+                fontSize: "20px",
+                color: "white",
+                textDecoration: "none",
+                fontWeight: "bold",
+                lineHeight: "200%"
+            },
+            linkFont: {
+                fontSize: "20px",
+                color: "#575757",
+                textDecoration: "none"
+            },
+            menuButton: {
+                backgroundColor: "transparent",
+                borderWidth: 0
+            }
+        }
+
         const styles = {
             navDiv: {
-                backgroundColor: "white",
                 width: "100%",
                 height: 0.075 * width,
                 opacity: "0.7",
@@ -76,7 +145,7 @@ class Nav extends Component {
             },
             menuFont: {
                 fontSize: "25px",
-                color: "#575757",
+                color: "#3D3D3D",
                 paddingLeft: "30px",
                 textDecoration: "none"
             },
@@ -98,6 +167,93 @@ class Nav extends Component {
                 color: "#575757",
                 textDecoration: "none"
             }
+        }
+
+        if (width < 480) {
+            return (
+                <div style={stylesMobile.navDiv}>
+
+                    <div style={stylesMobile.nameDiv}>
+                        {this.props.location === "about" ?
+                            <span style={stylesMobile.nameFont}>
+                                Home
+                        </span> :
+                            <div></div>
+                        }
+                        {this.props.location === "contact" ?
+                            <span style={stylesMobile.nameFont}>
+                                Contact
+                        </span> :
+                            <div></div>
+                        }
+                        {this.props.location !== "about" && this.props.location !== "contact" ?
+                            <span style={stylesMobile.nameFont}>
+                                Works
+                        </span> :
+                            <div></div>
+                        }
+
+
+                    </div>
+
+                    <div style={stylesMobile.menuDiv}>
+                        <button
+                            style={stylesMobile.menuButton}
+                            onClick={this.openMenu.bind(this)}>
+                            <Ionicon icon='ios-menu' fontSize="40px" color="white" />
+                        </button>
+                    </div>
+
+                    {this.state.isMenuOn === true ?
+                        <div
+                            style={{
+                                width: "45%",
+                                minHeight: "40vh",
+                                backgroundColor: "black",
+                                opacity: 0.8,
+                                zIndex: 10,
+                                position: "absolute",
+                                top: "50px",
+                                right: 0
+                            }}>
+                            <ul>
+                                <li>
+
+                                    <a href="/" style={stylesMobile.menuFont}>
+                                        About
+                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="/pf1" style={stylesMobile.menuFont}>
+                                        Works
+                    </a>
+                                </li>
+                                <li>
+                                    <a href="/pf1" style={stylesMobile.linkFont}>
+                                        Portfolio1
+                    </a>
+                                </li>
+                                <li>
+                                    <a href="/pf2" style={stylesMobile.linkFont}>
+                                        Portfolio2
+                    </a>
+                                </li>
+
+                                <li>
+
+                                    <a href="/contact" style={stylesMobile.menuFont}>
+                                        Contact
+                    </a>
+                                </li>
+                            </ul>
+
+                        </div>
+
+                        : <div></div>}
+
+                </div>
+            )
         }
 
 
@@ -169,18 +325,18 @@ class Nav extends Component {
                                 Contact
                     </a>
                         </p>
-                        <p style={{ textAlign: "right", marginRight: "13px", marginTop: "40px", fontSize: "20px" }}>
+                        <p style={{ textAlign: "center", marginTop: "40px", fontSize: "20px" }}>
                             <a style={styles.linkFont} href="https://github.com/mtoasis" target="_blank">
                                 Github
                             </a>
                         </p>
-                        <p style={{ textAlign: "left", marginLeft: "13px", fontSize: "20px" }}>
+                        <p style={{ textAlign: "center", fontSize: "20px" }}>
                             <a style={styles.linkFont} href="https://www.linkedin.com/in/julian-lee-188a36ba/" target="_blank">
                                 LinkedIn
                             </a>
                         </p>
-                        <p style={{ textAlign: "right", marginRight: "13px", fontSize: "20px" }}>
-                            <a style={styles.linkFont} href="https://docs.google.com/document/d/1MY2ZvHrgqVb3azMvRJLdQ8qOHPVQolI1RNlvmd0gRUw/edit?usp=sharing" target="_blank">
+                        <p style={{ textAlign: "center", fontSize: "20px" }}>
+                            <a style={styles.linkFont} href="https://drive.google.com/open?id=10MJ0RnNpDviAaVswkU6Z8XHsturj80eE" target="_blank">
                                 Resume
                             </a>
                         </p>
@@ -188,7 +344,7 @@ class Nav extends Component {
                     </div>
 
                 </div>
-         
+
             )
         }
         return (
@@ -212,7 +368,7 @@ class Nav extends Component {
                             Works
             </a>
                     </p>
-                    <div style={{marginLeft:"50px"}}>
+                    <div style={{ marginLeft: "50px" }}>
                         <p>
                             <a href="/pf1" style={styles.linkFont}>
                                 Portfolio1

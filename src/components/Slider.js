@@ -166,7 +166,7 @@ class Slider extends Component {
             container: {
                 display: "inline-block",
                 position: "absolute",
-                left: "20%",
+                left: "25%",
                 width: 0.655 * width,
                 height: 0.31 * width,
                 top: 0.04 * width
@@ -285,11 +285,10 @@ class Slider extends Component {
                 position: "absolute",
                 boxShadow: "0px 12px 20px #626262"
             }
-
-
-
         }
 
+
+      
         return (
             <div
                 style={styles.container}

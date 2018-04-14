@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import Slider from '../../components/Slider'
 import IconBar from '../../components/IconBar'
-import store from '../../store'
+import { connect } from "react-redux";
+import MobileSlider from '../../components/Slick'
+
 
 //slider images
 import img1 from '../../components/image/pf1/tnt1.jpg'
@@ -23,60 +25,93 @@ import androidIcon from '../../components/image/Icons/androidIcon.png'
 import iosIcon from '../../components/image/Icons/iosIcon.png'
 
 
-class Pf1 extends Component {
 
-    constructor() {
-        super()
-        this.state = {
-            isDetailOn: "none",
-            width: null,
-            height: null,
-        }
+let mapStateToProps = (store) => {
+    return {
+        width: store.location.width,
+        height: store.location.height
     }
+}
 
-    componentWillMount() {
-        this.updateDimensions()
-      }    
 
-      updateDimensions() {
-        let newWidth = window.innerWidth
-    
-        if (newWidth <= 1980) {
-          store.dispatch({
-            type:"STORE_WIDTH",
-            payload:newWidth
-          })
-        }
-    
-        let newHeight = window.innerHeight
-        if (newHeight <= 1080) {
-          store.dispatch({
-            type:"STORE_HEIGHT",
-            payload:newHeight
-          })
-        }
-      }
-    
+
+class Pf1 extends Component {
 
 
     render() {
+
+        const mobileStyle={
+            container:{
+                width:"90%",
+                position:"absolute",
+                top:"70px",
+                left:"4%"
+            }
+        }
+
+        if (this.props.width < 480) {
+            return (
+                <div style={mobileStyle.container}>
+                    <MobileSlider                     
+                    
+                    images={{
+                        img1: img1,
+                        img2: img2,
+                        img3: img3,
+                        img4: img4,
+                        img5: img5,
+                    }}
+
+                    imgSize={{
+                        width: 280.32,
+                        height: 590
+                    }}
+                    />
+
+                <IconBar
+                    techIcons={[
+                        { img: rnIcon },
+                        { img: reduxIcon },
+                        { img: expoIcon },
+                        { img: mongoIcon },
+                        { img: nodeIcon },
+                        { img: passportIcon },
+                        { img: androidIcon },
+                        { img: iosIcon },
+                    ]}
+
+                    linkIcons={[
+                        {
+                            img: githubIcon,
+                            url: "https://github.com/mtoasis/TNT-RN"
+                        },
+                        {
+                            img: liveIcon,
+                            url: "https://expo.io/@mtoasis22/TNTmobile"
+                        }]
+                    }
+                />
+
+                </div>
+            )
+        }
+
         return (
-
             <div>
-                <Slider 
-                
-                images={{
-                    img1: img1,
-                    img2: img2,
-                    img3: img3,
-                    img4: img4,
-                    img5: img5,
-                }}
+                <Slider
 
-                imgSize={{
-                    width:280.32,
-                    height:590
-                }}
+                    images={{
+                        img1: img1,
+                        img2: img2,
+                        img3: img3,
+                        img4: img4,
+                        img5: img5,
+                    }}
+
+                    imgSize={{
+                        width: 280.32,
+                        height: 590
+                    }}
                 />
                 <IconBar
                     techIcons={[
@@ -106,4 +141,4 @@ class Pf1 extends Component {
     }
 }
 
-export default Pf1;
+export default connect(mapStateToProps)(Pf1);
